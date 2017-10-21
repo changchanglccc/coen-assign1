@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to RFQ</title>
+</head>
+<body>
+    This is template file
+
+{#    {% for k in user.keys() %}#}
+{#    <p> {{ k }}</p>#}
+{#    {% endfor %}#}
+{##}
+{#	{% for website in websites %}#}
+{#    <p> {{ website }}</p>#}
+{#    {% endfor %}#}
+	<table>
+		<thead>
+			<th>name</th>
+			<th>author</th>
+			<th>pricw</th>
+		</thead>
+		<tbody>
+			{% for book in books %}
+				<tr>
+					<td>{{ book.name }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.price }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+</body>
+</html>
