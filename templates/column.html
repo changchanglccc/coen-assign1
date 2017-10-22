@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	$(document).ready(function() {
+		chart1 = new Highcharts.Chart({
+			chart: {
+				renderTo: 'container',
+				type: 'bar'
+			},
+			title: {
+				text: 'Fruit Consumption'
+			},
+			xAxis: {
+				categories: ['Apples', 'Bananas', 'Oranges']
+			},
+			yAxis: {
+				title: {
+					text: 'Fruit eaten'
+				}
+			},
+				series:{{ data|tojson|safe }}
+		  	});
+	   	});
+</body>
+</html>

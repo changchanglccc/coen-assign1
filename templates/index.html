@@ -5,8 +5,7 @@
     <title>Welcome to RFQ</title>
 </head>
 <body>
-    This is template file
-
+	<h2>Welcome to 'Request for quote'</h2>
 {#    {% for k in user.keys() %}#}
 {#    <p> {{ k }}</p>#}
 {#    {% endfor %}#}
@@ -14,22 +13,60 @@
 {#	{% for website in websites %}#}
 {#    <p> {{ website }}</p>#}
 {#    {% endfor %}#}
+	<h3>Here are our products</h3>
 	<table>
 		<thead>
-			<th>name</th>
-			<th>author</th>
-			<th>pricw</th>
+			<th>Product Number</th>
+			<th>Product Category</th>
 		</thead>
 		<tbody>
-			{% for book in books %}
+			{% for product in products %}
 				<tr>
-					<td>{{ book.name }}</td>
-					<td>{{ book.author }}</td>
-					<td>{{ book.price }}</td>
+					<td>{{ product.number }}</td>
+					<td>{{ product.category }}</td>
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
+	<br>
+	<h4>Test input box</h4>
+	<form action="." method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form>
 
+
+
+
+	<br>
+	<br>
+	<form action="form_action.asp" method="get">
+  		RFQ_ID: <input type="text" name="fname" />
+  		Account ID: <input type="text" name="lname" />
+  		<input type="submit" value="Submit" />
+	</form>
+	<br>
+
+	<br>
+	<script type=text/javascript>
+	  $(function() {
+		$('a#calculate').bind('click', function() {
+		  $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+			a: $('input[name="a"]').val(),
+			b: $('input[name="b"]').val()
+		  }, function(data) {
+			$("#result").text(data.result);
+		  });
+		  return false;
+		});
+	  });
+	</script>
+
+	<h1>jQuery Example</h1>
+	<p><input type=text size=5 name=a> +
+	   <input type=text size=5 name=b> =
+	   <span id=result>?</span>
+	<p><a href=# id=calculate>calculate server side</a>
+	<br>
 </body>
 </html>
