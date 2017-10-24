@@ -2,7 +2,6 @@
 
 import socket, json
 import requests
-import pr
 
 # match json data with json file
 def match_json(clientMsg,dict):

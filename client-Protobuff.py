@@ -38,19 +38,6 @@ requestmsg = product_pb2.requestMsg()
 # print requestmsg
 # protobuf_data = requestmsg.SerializeToString()
 
-
-
-# print "type pf str", type(protobuf_data)
-# print "Str: ",protobuf_data
-# new= product_pb2.requestMsg()
-# new.ParseFromString(protobuf_data)
-# # print "new: ",new
-# # print "test, ProductCategory: ",new.quantity
-# # if new.quantity == 10:
-# #     print type(new.quantity)
-# # # print protobuf_data.ParseFromString()
-
-
 client_request = {}
 HOST = '127.0.0.1'                                  # The remote host
 PORT = 50007                                        # The same port as used by the server
@@ -61,29 +48,6 @@ print "Use this format: RFQ_ID, Account ID, ProductNumber, ProductCategory, Quan
 connectFlag = True
 
 while connectFlag:
-    # requestmsg = ProtobufByClient(requestmsg)
-    # ProtobufByClient(requestmsg).SerializeToString()
-
-
-#     RFQ_ID = raw_input('Please enter RFQ_ID ... (e.g.: 1 )\n')
-#     client_request["RFQ ID"] = RFQ_ID
-#     AccountID = raw_input('Please enter AccountID ... (e.g.: 001 )\n')
-#     client_request["Account ID"] = AccountID
-#     ProductNumber = raw_input('Please enter ProductNumber ... (e.g.: 1 / 2 / 3)\n')
-#     client_request["Product Number"] = ProductNumber
-#     ProductCategory = raw_input('Please enter ProductCategory ... (e.g.: (1) apple/ banana/ (2) beef/ chicken/ (3) milk/ yogurt )\n')
-#     client_request["Product Category"] = ProductCategory
-#     Quantity = raw_input('Please enter Quantity ... (e.g.: 10 )\n')
-#     client_request["Quantity"] = Quantity
-#     jsonMsg = json.dumps(client_request)
-#     # print jsonMsg
-#     s.sendall(jsonMsg)
-#     # data = s.recv(1024)
-#     # print data
-#     data = json.loads(s.recv(1024))                               # change type of clientmsg to be dict
-#     print 'Received: ', data
-#     print '-------------------------------------------------------------'
-
     s.sendall(ProtobufByClient(requestmsg).SerializeToString())
     data = s.recv(1024) # change type of clientmsg to be dict
     newReplymsg.ParseFromString(data)
