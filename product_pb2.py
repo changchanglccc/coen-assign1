@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='product.proto',
   package='',
   syntax='proto2',
-  serialized_pb=_b('\n\rproduct.proto\"o\n\nrequestMsg\x12\r\n\x05RFQID\x18\x01 \x02(\t\x12\x10\n\x08\x63\x63ountID\x18\x02 \x02(\t\x12\x15\n\rproductNumber\x18\x03 \x02(\x05\x12\x17\n\x0fproductCategory\x18\x04 \x02(\t\x12\x10\n\x08Quantity\x18\x05 \x02(\x05\"7\n\x08replyMsg\x12\x11\n\tunitPrice\x18\x01 \x03(\t\x12\x18\n\x10validationPeriod\x18\x02 \x03(\t')
+  serialized_pb=_b('\n\rproduct.proto\"p\n\nrequestMsg\x12\r\n\x05RFQID\x18\x01 \x02(\t\x12\x11\n\taccountID\x18\x02 \x02(\t\x12\x15\n\rproductNumber\x18\x03 \x02(\t\x12\x17\n\x0fproductCategory\x18\x04 \x02(\t\x12\x10\n\x08quantity\x18\x05 \x02(\x05\"7\n\x08replyMsg\x12\x11\n\tunitPrice\x18\x01 \x03(\t\x12\x18\n\x10validationPeriod\x18\x02 \x03(\t')
 )
 
 
@@ -40,7 +40,7 @@ _REQUESTMSG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='ccountID', full_name='requestMsg.ccountID', index=1,
+      name='accountID', full_name='requestMsg.accountID', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -48,8 +48,8 @@ _REQUESTMSG = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='productNumber', full_name='requestMsg.productNumber', index=2,
-      number=3, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      number=3, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -61,7 +61,7 @@ _REQUESTMSG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='Quantity', full_name='requestMsg.Quantity', index=4,
+      name='quantity', full_name='requestMsg.quantity', index=4,
       number=5, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -80,7 +80,7 @@ _REQUESTMSG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=17,
-  serialized_end=128,
+  serialized_end=129,
 )
 
 
@@ -117,8 +117,8 @@ _REPLYMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=130,
-  serialized_end=185,
+  serialized_start=131,
+  serialized_end=186,
 )
 
 DESCRIPTOR.message_types_by_name['requestMsg'] = _REQUESTMSG
