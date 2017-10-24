@@ -8,6 +8,6 @@ message requestMsg{
 	}
 
 message replyMsg{
-		repeated string unitPrice = 1;
-		repeated string validationPeriod = 2;
+		required string unitPrice = 1;
+		required string validationPeriod = 2;
 	}

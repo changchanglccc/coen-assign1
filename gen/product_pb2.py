@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='product.proto',
   package='',
   syntax='proto2',
-  serialized_pb=_b('\n\rproduct.proto\"p\n\nrequestMsg\x12\r\n\x05RFQID\x18\x01 \x02(\t\x12\x11\n\taccountID\x18\x02 \x02(\t\x12\x15\n\rproductNumber\x18\x03 \x02(\t\x12\x17\n\x0fproductCategory\x18\x04 \x02(\t\x12\x10\n\x08quantity\x18\x05 \x02(\x05\"7\n\x08replyMsg\x12\x11\n\tunitPrice\x18\x01 \x03(\t\x12\x18\n\x10validationPeriod\x18\x02 \x03(\t')
+  serialized_pb=_b('\n\rproduct.proto\"p\n\nrequestMsg\x12\r\n\x05RFQID\x18\x01 \x02(\t\x12\x11\n\taccountID\x18\x02 \x02(\t\x12\x15\n\rproductNumber\x18\x03 \x02(\t\x12\x17\n\x0fproductCategory\x18\x04 \x02(\t\x12\x10\n\x08quantity\x18\x05 \x02(\x05\"7\n\x08replyMsg\x12\x11\n\tunitPrice\x18\x01 \x02(\t\x12\x18\n\x10validationPeriod\x18\x02 \x02(\t')
 )
 
 
@@ -93,15 +93,15 @@ _REPLYMSG = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='unitPrice', full_name='replyMsg.unitPrice', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='validationPeriod', full_name='replyMsg.validationPeriod', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

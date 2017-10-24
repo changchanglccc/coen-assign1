@@ -22,18 +22,21 @@ newReplymsg = product_pb2.replyMsg()    # convient to receive replymsg from serv
 
 requestmsg = product_pb2.requestMsg()
 requestmsg.RFQID = "1"
-requestmsg.accountID = "1"
+requestmsg.accountID = "001"
 requestmsg.productNumber = "1"
 requestmsg.productCategory = "apple"
-requestmsg.quantity = 10
+requestmsg.quantity = 50
 print requestmsg
 protobuf_data = requestmsg.SerializeToString()
-print "type pf str", type(protobuf_data)
-print "Str: ",protobuf_data
-new= product_pb2.requestMsg()
-new.ParseFromString(protobuf_data)
-print "new: ",new
-# print protobuf_data.ParseFromString()
+# print "type pf str", type(protobuf_data)
+# print "Str: ",protobuf_data
+# new= product_pb2.requestMsg()
+# new.ParseFromString(protobuf_data)
+# # print "new: ",new
+# # print "test, ProductCategory: ",new.quantity
+# # if new.quantity == 10:
+# #     print type(new.quantity)
+# # # print protobuf_data.ParseFromString()
 
 
 client_request = {}
@@ -66,75 +69,10 @@ print "Use this format: RFQ_ID, Account ID, ProductNumber, ProductCategory, Quan
 #     print '-------------------------------------------------------------'
 
 s.sendall(protobuf_data)
-data = s.recv(1024)              # change type of clientmsg to be dict
-print 'Received: ', data
+data = s.recv(1024) # change type of clientmsg to be dict
+newReplymsg.ParseFromString(data)
+
+print 'Received: ', newReplymsg
 
 s.close()
-
-
-
-
-
-
-
-
-
-# request = ""
-# jsondata = {}
-# pbdata = ""
-# reply = ""
-
-#
-# def getRequestFromClient():
-#     return request
-#
-# def changeToJSON():
-#     return jsondata
-#
-# def changeTOProtocolBuff():
-#     return pbdata
-#
-# def sentRequest():
-#
-#
-# def showReply(reply):
-#     for item in reply:
-#         print item + " "
-
-
-
-
-
-
-# client_list = []
-# client_dict ={}
-
-# if __name__ == '__main__':
-#     print "-------------- Welcome to RFQ ------------------"
-#     print "Use this format: RFQ_ID, Account_ID, ProductNumber, ProductCategory, Quantity"
-#     print 'e.g.: 1,001,2,beef,5'
-#
-# #     client_input = raw_input("--------Please enter your Request-----------\n\n")
-# #     client_split= client_input.split(',')
-# #
-# #
-# # # use json data to communicate
-# #     client_list = client_split[1:client_split.__len__()]
-# #     client_list = tuple(client_list)
-# #     print client_split
-#
-#     # method 2: {"RFQ_ID": 1, "Account ID": 001, "Product Number": 2, "Product Category": "beef", "Quantity": 5}
-#     client_request = {}
-#     client_request["RFQ ID"] = "1"
-#     client_request["Account ID"] = "001"
-#     client_request["Procuct Number"] = "1"
-#     client_request["Product Category"] = "beef"
-#     client_request["Quantity"] = 5
-#     jsonMsg = json.dumps(client_request)
-#     print "jsonStr: ",jsonMsg
-
-# sent jsonMsg to server
-
-
-
 
