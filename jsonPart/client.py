@@ -1,5 +1,6 @@
+
 # client
-import json, socket,requests
+import json, socket
 
 
 def JsonByClient(client_request):
@@ -45,4 +46,3 @@ while connectFlag:
     print '-------------------------------------------------------------'
 
 s.close()
-

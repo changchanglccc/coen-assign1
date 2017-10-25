@@ -55,9 +55,8 @@ print 'Connected by', addr
 while 1:
     clientmsg = conn.recv(1024)     #type of clientmsg is string
     if not clientmsg: break
-    print "Client request is : ",clientmsg
-    print
-    print
+    # print "Client request is : ",clientmsg
+
     clientMsg = json.loads(clientmsg)   # change type of clientmsg to be dict
     # print type(clientMsg)
 
@@ -76,4 +75,3 @@ while 1:
     conn.sendall(server_msg)
 
 conn.close()
-

@@ -40,6 +40,7 @@ print 'Connected by', addr
 while 1:
     clientmsg = conn.recv(1024)     #type of clientmsg is string
     if not clientmsg: break
+    print "type-----",type(clientmsg)
     # clientmsg.ParseFromString()
     # print "Client request is : ", clientmsg
     newRequestmsg.ParseFromString(clientmsg)

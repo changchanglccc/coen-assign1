@@ -16,27 +16,9 @@ def ProtobufByClient(requestmsg):
 
 print "-------------- Welcome to RFQ ------------------"
 
-# # method 2: {"RFQ_ID": 1, "Account ID": 001, "Product Number": 2, "Product Category": "beef", "Quantity": 5}
-# client_request = {}
-# client_request["RFQ ID"] = "1"
-# client_request["Account ID"] = "001"
-# client_request["Product Number"] = "1"
-# client_request["Product Category"] = "apple"
-# client_request["Quantity"] = 10
-# jsonMsg = json.dumps(client_request)
-# print "jsonStr: ",jsonMsg
-
 newReplymsg = product_pb2.replyMsg()    # convient to receive replymsg from server
 
 requestmsg = product_pb2.requestMsg()
-#
-# requestmsg.RFQID = "1"
-# requestmsg.accountID = "001"
-# requestmsg.productNumber = "1"
-# requestmsg.productCategory = "apple"
-# requestmsg.quantity = 50
-# print requestmsg
-# protobuf_data = requestmsg.SerializeToString()
 
 client_request = {}
 HOST = '127.0.0.1'                                  # The remote host

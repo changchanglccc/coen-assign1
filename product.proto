@@ -11,3 +11,4 @@ message replyMsg{
 		required string unitPrice = 1;
 		required string validationPeriod = 2;
 	}
+

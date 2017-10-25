@@ -53,6 +53,7 @@ while connectFlag:
     newReplymsg.ParseFromString(data)
 
     print 'Received: ', newReplymsg
+    print '===================================================='
 
 s.close()
 
