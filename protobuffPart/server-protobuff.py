@@ -5,6 +5,7 @@ import socket, json
 
 # match Protocol buffer data with json file
 def match_protobuf(clientMsg,dict,replymsg):
+    replymsg = product_pb2.replyMsg()
     a = []
     print "========= check ==========="
     for x in datadict:                                                      # match product number
@@ -21,13 +22,20 @@ def match_protobuf(clientMsg,dict,replymsg):
                         else:
                             replymsg.unitPrice = "$--"
                             replymsg.validationPeriod = "We dont have enough products now... "
+                else:
+                    print "HERE---------"
+                    replymsg.unitPrice = "$--"
+                    replymsg.validationPeriod = "Your product category is wrong, please enter again... "
+        else:
+            replymsg.unitPrice = "$--"
+            replymsg.validationPeriod = "Your product number is wrong, please enter again... "
     return replymsg
 
 
 print "-------------- Start RFQ Server ------------------"
 
 newRequestmsg = product_pb2.requestMsg()
-replymsg = product_pb2.replyMsg()
+# replymsg = product_pb2.replyMsg()
 
 
 HOST = '127.0.0.1'                 # Symbolic name meaning all available interfaces
@@ -49,7 +57,7 @@ while 1:
         datadict = json.load(data_file)
         #print "datadict is : ",datadict
     data_file.close()
-
+    replymsg = product_pb2.replyMsg()
     replymsg = match_protobuf(newRequestmsg,datadict,replymsg)
     protobuf_data = replymsg.SerializeToString()
     conn.sendall(protobuf_data)

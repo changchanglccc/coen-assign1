@@ -1,0 +1,14 @@
+syntax="proto2";
+message requestMsg{
+        required string RFQID = 1;
+		required string accountID = 2;
+		required string productNumber = 3;
+		required string productCategory = 4;
+		required int32 quantity = 5;
+	}
+
+message replyMsg{
+		required string unitPrice = 1;
+		required string validationPeriod = 2;
+	}
+

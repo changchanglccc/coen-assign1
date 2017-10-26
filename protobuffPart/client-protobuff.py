@@ -7,6 +7,7 @@ import socket
 
 # funtion of client entering
 def ProtobufByClient(requestmsg):
+    print "--------"
     requestmsg.RFQID = raw_input("Please enter RFQ_ID ... (e.g.: 1 )\n")
     requestmsg.accountID = raw_input('Please enter AccountID ... (e.g.: 001 )\n')
     requestmsg.productNumber = raw_input('Please enter ProductNumber ... (e.g.: 1 / 2 / 3)\n')
