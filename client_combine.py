@@ -1,5 +1,5 @@
 # client
-import json, socket,product_pb2
+import json, socket,product_pb2,sys
 
 
 def JsonByClient(client_request):
@@ -35,9 +35,16 @@ newReplymsg = product_pb2.replyMsg()    # convient to receive replymsg from serv
 requestmsg = product_pb2.requestMsg()
 client_request = {}
 
+import argparse
 
-HOST = '18.216.94.47'                                  # The remote host
-PORT = 10007                                        # The same port as used by the server
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('port', nargs='?', help='an integer for the accumulator', default=1314)
+
+args = parser.parse_args()
+
+print(args)
+HOST = 'ec2-18-216-94-47.us-east-2.compute.amazonaws.com'                                  # The remote host
+PORT = int(args.port)                                        # The same port as used by the server
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
@@ -46,12 +53,19 @@ print "Use this format: RFQ_ID, Account ID, ProductNumber, ProductCategory, Quan
 connectFlag = True
 
 while connectFlag:
+    if PORT == 1314:
+        jsonMsg = json.dumps(JsonByClient(client_request))
+        s.sendall(jsonMsg)
+        data = json.loads(s.recv(1024))  # change type of clientmsg to be dict
+        print 'Received: ', data
+        print '-------------------------------------------------------------'
+    else:
+        s.sendall(ProtobufByClient(requestmsg).SerializeToString())
+        data = s.recv(1024)  # change type of clientmsg to be dict
+        newReplymsg.ParseFromString(data)
 
-    jsonMsg = json.dumps(JsonByClient(client_request))
-    s.sendall(jsonMsg)
-    data = json.loads(s.recv(1024))  # change type of clientmsg to be dict
-    print 'Received: ', data
-    print '-------------------------------------------------------------'
+        print 'Received: ', newReplymsg
+        print '============================================================'
 
 s.close()
 

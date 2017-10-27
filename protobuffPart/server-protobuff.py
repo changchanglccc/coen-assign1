@@ -3,7 +3,7 @@
 import product_pb2
 import socket, json
 
-# match Protocol buffer data with json file
+# # match Protocol buffer data with json file
 def match_protobuf(clientMsg,dict,replymsg):
     replymsg = product_pb2.replyMsg()
     a = []
@@ -19,16 +19,19 @@ def match_protobuf(clientMsg,dict,replymsg):
                             print 'z0: ',z[0]
                             replymsg.unitPrice = z[1]
                             replymsg.validationPeriod = z[2]
+                            return replymsg
                         else:
                             replymsg.unitPrice = "$--"
                             replymsg.validationPeriod = "We dont have enough products now... "
                 else:
                     print "HERE---------"
                     replymsg.unitPrice = "$--"
-                    replymsg.validationPeriod = "Your product category is wrong, please enter again... "
+                    if not replymsg.validationPeriod:
+                        replymsg.validationPeriod = "Your product category is wrong, please enter again... "
         else:
             replymsg.unitPrice = "$--"
-            replymsg.validationPeriod = "Your product number is wrong, please enter again... "
+            if not replymsg.validationPeriod:
+                replymsg.validationPeriod = "Your product category is wrong, please enter again... "
     return replymsg
 
 
@@ -46,9 +49,9 @@ s.listen(1)
 conn, addr = s.accept()
 print 'Connected by', addr
 while 1:
-    clientmsg = conn.recv(1024)     #type of clientmsg is string
+    clientmsg = conn.recv(1024)     #type of cl11ientmsg is string
     if not clientmsg: break
-    # clientmsg.ParseFromString()
+    #clientmsg.ParseFromString()
     # print "Client request is : ", clientmsg
     newRequestmsg.ParseFromString(clientmsg)
     #read database
